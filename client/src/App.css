@@ -11,3 +11,18 @@
   min-height: 54em;
   height: auto;
 }
+.NavBar {
+  width: 50%;
+  height: 40px;
+  background-color: lightblue;
+  display: flex;
+  justify-content: space-evenly;
+  list-style: none;
+  margin-left: 25%;
+  margin-top: 10px;
+}
+.NavBar button {
+  border: none;
+  background-color: lightblue;
+  cursor: pointer;
+}
