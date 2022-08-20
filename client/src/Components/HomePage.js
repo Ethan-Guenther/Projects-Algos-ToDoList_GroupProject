@@ -7,7 +7,7 @@ const HomePage = () => {
       <div>
         <h1>Hello Friends</h1>
 
-        {/* <h2>Don't forget to use branches when pushing in order to prevent merge conflicts</h2> */}
+        {/*Don't forget to use branches when pushing in order to prevent merge conflicts */}
         <div>
           <ul className='NavBar'>
             <li><button><Link to={"/toDoList/daily"}>Show All</Link></button></li>
@@ -16,11 +16,17 @@ const HomePage = () => {
             <li><button><Link to={"/toDoList/monthly"}>Monthly List</Link></button></li>
           </ul>
         </div>
+        {/* Use built in date function to create time zone when tasks
+        need to be completed. Example: let date = new Date(year, month, day, hours minutes, seconds, milliseconds)*/}
         <div className='create_form_container'>
             <form>
               <label>Add Plan:</label>
               <br/>
               <textarea cols={60} rows={15}/>
+              <br/>
+              <label>Number of days to complete:</label>
+              <br/>
+              <input type={"number"}/>
               <br/>
               <button>Submit</button>
             </form>

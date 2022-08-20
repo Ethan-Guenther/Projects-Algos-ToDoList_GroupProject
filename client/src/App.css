@@ -51,7 +51,11 @@
   border: solid black;
   box-shadow: -5px 5px 10px;
   color: rgb(8, 4, 15);
-  text-shadow: black 0px 0px 8px;
   background-color: rgb(182, 182, 182);
   font-weight: 600;
+  cursor: pointer;
+  border-radius: 15px;
+}
+.create_form_container input {
+  margin: 30px;
 }
