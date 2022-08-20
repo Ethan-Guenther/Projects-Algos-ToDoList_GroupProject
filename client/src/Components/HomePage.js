@@ -10,11 +10,20 @@ const HomePage = () => {
         {/* <h2>Don't forget to use branches when pushing in order to prevent merge conflicts</h2> */}
         <div>
           <ul className='NavBar'>
+            <li><button><Link to={"/toDoList/daily"}>Show All</Link></button></li>
             <li><button><Link to={"/toDoList/daily"}>Today's List</Link></button></li>
             <li><button><Link to={"/toDoList/weekly"}>Weekly List</Link></button></li>
             <li><button><Link to={"/toDoList/monthly"}>Monthly List</Link></button></li>
-
           </ul>
+        </div>
+        <div className='create_form_container'>
+            <form>
+              <label>Add Plan:</label>
+              <br/>
+              <textarea cols={60} rows={15}/>
+              <br/>
+              <button>Submit</button>
+            </form>
         </div>
       </div>
     </div>
