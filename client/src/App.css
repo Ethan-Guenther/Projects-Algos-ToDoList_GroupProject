@@ -41,3 +41,17 @@
 .create_form_container textarea {
   margin: 30px;
 }
+.create_form_container label {
+  font-size: larger;
+  font-weight: 700;
+}
+.create_form_container button {
+  height: 40px;
+  width: 150px;
+  border: solid black;
+  box-shadow: -5px 5px 10px;
+  color: rgb(8, 4, 15);
+  text-shadow: black 0px 0px 8px;
+  background-color: rgb(182, 182, 182);
+  font-weight: 600;
+}
