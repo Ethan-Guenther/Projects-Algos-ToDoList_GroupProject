@@ -25,4 +25,19 @@
   border: none;
   background-color: lightblue;
   cursor: pointer;
+
+}
+
+.create_form_container {
+  height: 30em;
+  width: 50%;
+  margin-top: 10px;
+  margin-left: 25%;
+  background-color: lightblue;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.create_form_container textarea {
+  margin: 30px;
 }
