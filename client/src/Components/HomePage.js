@@ -11,6 +11,8 @@ const HomePage = () => {
 
     axios.post("http://localhost:8000/api/planner", {
       task,
+      // Having Trouble getting dueDate to work on post request. ERROR dueDate not defined
+      dueDate
     })
     .then((res) => {
       console.log(res);
@@ -30,10 +32,10 @@ const HomePage = () => {
         {/*Don't forget to use branches when pushing in order to prevent merge conflicts */}
         <div>
           <ul className='NavBar'>
-            <li><button><Link to={"/toDoList/daily"}>Show All</Link></button></li>
-            <li><button><Link to={"/toDoList/daily"}>Today</Link></button></li>
-            <li><button><Link to={"/toDoList/weekly"}>Week</Link></button></li>
-            <li><button><Link to={"/toDoList/monthly"}>Month</Link></button></li>
+            <li><button><Link to={"/toDoList/all"}>Show All</Link></button></li>
+            <li><button><Link to={"/toDoList/today"}>Today</Link></button></li>
+            <li><button><Link to={"/toDoList/week"}>Week</Link></button></li>
+            <li><button><Link to={"/toDoList/month"}>Month</Link></button></li>
           </ul>
         </div>
         {/* Use built in date function to create time zone when tasks
@@ -50,7 +52,7 @@ const HomePage = () => {
               <br/>
               <label>Due Date:</label>
               <br/>
-              <input type={"date"} name="dueDate"/>
+              <input type={"date"}/>
               <br/>
               <button>Submit</button>
             </form>
