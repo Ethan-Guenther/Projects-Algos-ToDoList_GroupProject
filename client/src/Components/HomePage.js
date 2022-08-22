@@ -4,7 +4,7 @@ import axios from 'axios';
 
 const HomePage = () => {
   const [task, setTask] = useState("");
-  const [dueDate, setDueDate] = useState("");
+  const [dueDate, setDueDate] = useState(Date);
   const [errors, setErrors] = useState({}); 
 
   const navigate = useNavigate();
@@ -60,7 +60,6 @@ const HomePage = () => {
               <br/>
               <input type={"date"}
               name="dueDate" 
-              value={dueDate}
               onChange={(e) => setDueDate(e.target.value)}/>
               <br/>
               <button type="submit">Submit</button>
