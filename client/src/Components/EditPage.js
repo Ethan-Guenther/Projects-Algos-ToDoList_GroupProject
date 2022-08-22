@@ -1,6 +1,7 @@
 import {useState, useEffect} from 'react';
 import axios from 'axios';
 import { Link, useParams, useNavigate } from 'react-router-dom';
+import moment from 'moment';
 
 const EditPage = () => {
 
@@ -11,7 +12,7 @@ const EditPage = () => {
     const navigate = useNavigate();
 
     useEffect( () => {
-        axios.get(`http://localhost/8000/api/planner/${id}`)
+        axios.get(`http://localhost:8000/api/planner/${id}`)
         .then( (res) => {
             console.log(res.data);
             setTask(res.data.task);
@@ -19,7 +20,6 @@ const EditPage = () => {
         })
         .catch( (err) => console.log(err) );
     }, [id]);
-    
 
     const onSubmitHandler = (e) => {
         e.preventDefault();
@@ -32,7 +32,7 @@ const EditPage = () => {
         })
         .then((res) => {
             console.log(res);
-            navigate("/toDoList/all");
+            // navigate("/toDoList/all");
     
         })
         .catch((err) => {
@@ -71,7 +71,7 @@ const EditPage = () => {
                         <label>Due Date:</label>
                         <br/>
                         <input type={"date"}
-                        name="dueDate" 
+                        name="dueDate" value={moment(dueDate).format("YYYY-MM-DD")}
                         onChange={(e) => setDueDate(e.target.value)}/>
                         <br/>
                         <button type="submit">Submit</button>
