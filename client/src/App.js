@@ -5,6 +5,7 @@ import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import HomePage from './Components/HomePage';
 import ShowAll from './Components/ShowAll';
 import EditPage from './Components/EditPage';
+import ShowToday from './Components/ShowToday';
 
 function App() {
   {/*We will use this toDoList state for each Separate page... All, Today, Week
@@ -27,6 +28,8 @@ and month. Remember to use props when bringing state down to the child class.*/}
           <Route path='/toDoList/all' element={<ShowAll toDoList = {toDoList} setToDoList = {setToDoList}/>} />
           {/* Added route for edit page */}
           <Route path='/toDoList/edit/:id' element={<EditPage />} />
+          {/* Added route for today page */}
+          <Route path='/toDoList/today' element={<ShowToday toDoList = {toDoList} setToDoList = {setToDoList}/>} />
         </Routes>
       </BrowserRouter>
     </div>
