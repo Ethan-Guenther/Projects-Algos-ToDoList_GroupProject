@@ -15,6 +15,17 @@ const ShowAll = (props) => {
         .catch( (err) => console.log(err) );
     }, []);
 
+    // added delete task to homePage, tested and worked in my desktop- JB
+    const deleteItem = (taskId) => {
+      axios.delete(`http://localhost:8000/api/planner/${taskId}`)
+      .then((res) =>{
+          console.log(res.data);
+          const newTask = toDoList.filter(( task, index ) => task._id !== taskId )
+          setToDoList(newTask);
+      })
+      .catch((err) => console.log("Error of newToDoList", err));
+  };
+
   return (
     <div className='container'>
       <div>
@@ -28,19 +39,35 @@ const ShowAll = (props) => {
             <li><button><Link to={"/toDoList/month"}>Month</Link></button></li>
           </ul>
         </div>
-        {/* Created basic list, needs restructuring still for intended layout. use Table */}
-        { toDoList.map((list, index) => {
-                return(
-                    <div>
-                        <p>{list.task}</p>
-                        <p>{moment(list.dueDate).format("MM-DD-YYYY")}</p>
-                    </div>
-                    
-                )
-            })
-        }
+ {/* added a table structure needs to be CSSd to be in place- JB */}
+        <div>
+        <table className="tableData">
+            <thead>
+              <tr>
+                <th>Task</th>
+                <th>Due Date</th>
+                <th>Actions</th>
+              </tr>
+                </thead>
+                <tbody>
+                  { toDoList.map((list, index) => {
+                    return(
+                      <tr key={list._id}>
+                        <td>{list.task}</td>
+                        <td>{moment(list.dueDate).format("MM-DD-YYYY")}</td>
+                        <td>
+                          <Link className="Link" to= {`/toDoList/${list._id}/edit`}>Edit</Link> | 
+                          <button className='delete-button' onClick = {() => deleteItem(list._id)}>Delete </button>
+                        </td>
+                      </tr>
+                    )
+                  })}
+                  </tbody>
+                </table>
+        </div>
+
     </div>
-    </div>
+  </div>
   )
 }
 
