@@ -56,7 +56,8 @@ const ShowAll = (props) => {
                         <td>{list.task}</td>
                         <td>{moment(list.dueDate).format("MM-DD-YYYY")}</td>
                         <td>
-                          <Link className="Link" to= {`/toDoList/${list._id}/edit`}>Edit</Link> | 
+                          {/* modified Link route below trying to get edit page to work */}
+                          <Link className="Link" to= {`/toDoList/edit/${list._id}`}>Edit</Link> | 
                           <button className='delete-button' onClick = {() => deleteItem(list._id)}>Delete </button>
                         </td>
                       </tr>
