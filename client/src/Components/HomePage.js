@@ -1,10 +1,14 @@
 import {useState} from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 const HomePage = () => {
   const [task, setTask] = useState("");
+  const [dueDate, setDueDate] = useState("");
   const [errors, setErrors] = useState({}); 
+
+  const navigate = useNavigate();
+
 
   const onSubmitHandler = (e) => {
     e.preventDefault();
@@ -12,11 +16,13 @@ const HomePage = () => {
     axios.post("http://localhost:8000/api/planner", {
       task,
       // Having Trouble getting dueDate to work on post request. ERROR dueDate not defined
+      // wasn't set as a useState - JB
       dueDate
     })
     .then((res) => {
       console.log(res);
-      setTask(''); 
+      navigate("/toDoList/all");
+
     })
     .catch((err) => {
       console.log(err);
@@ -52,9 +58,12 @@ const HomePage = () => {
               <br/>
               <label>Due Date:</label>
               <br/>
-              <input type={"date"}/>
+              <input type={"date"}
+              name="dueDate" 
+              value={dueDate}
+              onChange={(e) => setDueDate(e.target.value)}/>
               <br/>
-              <button>Submit</button>
+              <button type="submit">Submit</button>
             </form>
         </div>
       </div>

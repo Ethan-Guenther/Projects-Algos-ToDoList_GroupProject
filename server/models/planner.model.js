@@ -1,7 +1,8 @@
 const mongoose = require('mongoose');
 
 const PlannerSchema = mongoose.Schema({
-    name: {
+    // Changed 'name' to 'task' matching the front end -JB
+    task: {
         type:String,
         required:[true, "Name is required"],
     },
