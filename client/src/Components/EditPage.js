@@ -19,6 +19,7 @@ const EditPage = () => {
         })
         .catch( (err) => console.log(err) );
     }, [id]);
+    
 
     const onSubmitHandler = (e) => {
         e.preventDefault();
