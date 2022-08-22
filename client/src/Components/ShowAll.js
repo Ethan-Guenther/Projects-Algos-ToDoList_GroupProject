@@ -1,6 +1,7 @@
 import React, { useState, useEffect }  from 'react'
 import axios from "axios";
 import { Link } from "react-router-dom";
+import moment from 'moment';
 
 const ShowAll = (props) => {
     const {toDoList, setToDoList} = props;
@@ -32,7 +33,7 @@ const ShowAll = (props) => {
                 return(
                     <div>
                         <p>{list.task}</p>
-                        <p>{list.dueDate}</p>
+                        <p>{moment(list.dueDate).format("MM-DD-YYYY")}</p>
                     </div>
                     
                 )
