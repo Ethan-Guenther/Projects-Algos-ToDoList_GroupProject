@@ -6,6 +6,9 @@ import moment from 'moment';
 const ShowAll = (props) => {
     const {toDoList, setToDoList} = props;
 
+    const currentDate = moment().format('MM-DD-YYYY');
+    console.log(currentDate);
+
     useEffect( () => {
         axios.get("http://localhost:8000/api/planner")
         .then( (res) => {
@@ -54,7 +57,8 @@ const ShowAll = (props) => {
                     return(
                       <tr key={list._id}>
                         <td>{list.task}</td>
-                        <td>{moment(list.dueDate).format("MM-DD-YYYY")}</td>
+                        <td>{moment(list.dueDate).add(1,'days').format("MM-DD-YYYY")}</td>
+                        {console.log(moment(currentDate).add(7,'days').format("MM-DD-YYYY"))}
                         <td>
                           {/* modified Link route below trying to get edit page to work */}
                           <Link className="Link" to= {`/toDoList/edit/${list._id}`}>Edit</Link> | 
