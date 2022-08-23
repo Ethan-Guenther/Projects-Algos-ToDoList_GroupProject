@@ -3,26 +3,22 @@ import axios from 'axios';
 import moment from 'moment';
 import { Link, useNavigate } from "react-router-dom";
 
-
-const ShowToday = (props) => {
+const ShowMonth = (props) => {
     const {toDoList, setToDoList} = props;
     const navigate = useNavigate();
 
     // build a formatted string for todays date
     let currentDate = new Date();
-    let date = currentDate.getDate();
     let month = currentDate.getMonth(); //Be careful! January is 0 not 1
     month = month + 1;
     let monthStr = month.toString();
     if (monthStr.length < 2) {
         monthStr = "0" + monthStr;
     }
-    let year = currentDate.getFullYear();
-    let dateString = year + "-" +(monthStr) + "-" + date;
 
-    // filter the toDoList array recieved from props for dueDate = todays date
+    // filter the toDoList array recieved from props for dueDate = this month
     const filterArr = toDoList.filter(( task, index ) => 
-        task.dueDate.slice(0,10) === dateString );
+        moment(task.dueDate).format("MM") === monthStr );
     // console.log("Filtered Array = ", filterArr);
 
     const deleteItem = (taskId) => {
@@ -36,16 +32,17 @@ const ShowToday = (props) => {
         .catch((err) => console.log("Error of newToDoList", err));
     };
 
+
     return (
-    <div className='container'>
+        <div className='container'>
         <div>
             <h1>Hello Friends</h1>
             <div>
                 <ul className='NavBar'>
                     <li><button><Link to={"/"}>Home Page</Link></button></li>
                     <li><button><Link to={"/toDoList/all"}>Show All</Link></button></li>
+                    <li><button><Link to={"/toDoList/today"}>Today</Link></button></li>
                     <li><button><Link to={"/toDoList/week"}>Week</Link></button></li>
-                    <li><button><Link to={"/toDoList/month"}>Month</Link></button></li>
                 </ul>
             </div>
    {/* added a table structure needs to be CSSd to be in place- JB */}
@@ -79,4 +76,4 @@ const ShowToday = (props) => {
     </div>    )
 }
 
-export default ShowToday
+export default ShowMonth
