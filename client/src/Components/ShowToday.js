@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import moment from 'moment';
 import { Link, useNavigate } from "react-router-dom";
@@ -24,6 +24,7 @@ const ShowToday = (props) => {
     const filterArr = toDoList.filter(( task, index ) => 
         task.dueDate.slice(0,10) === dateString );
     // console.log("Filtered Array = ", filterArr);
+
 
     const deleteItem = (taskId) => {
         axios.delete(`http://localhost:8000/api/planner/${taskId}`)
@@ -76,7 +77,9 @@ const ShowToday = (props) => {
                 </table>
             </div>
         </div>
-    </div>    )
+    </div> 
+    )
+
 }
 
 export default ShowToday

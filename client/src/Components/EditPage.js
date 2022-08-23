@@ -32,7 +32,7 @@ const EditPage = () => {
         })
         .then((res) => {
             console.log(res);
-            // navigate("/toDoList/all");
+            navigate("/toDoList/all");
     
         })
         .catch((err) => {
@@ -71,7 +71,7 @@ const EditPage = () => {
                         <label>Due Date:</label>
                         <br/>
                         <input type={"date"}
-                        name="dueDate" value={dueDate.slice(0,10)}
+                        name="dueDate" value={dueDate}
                         onChange={(e) => setDueDate(e.target.value)}/>
                         <br/>
                         <button type="submit">Submit</button>

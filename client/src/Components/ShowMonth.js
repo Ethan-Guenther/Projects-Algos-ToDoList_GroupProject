@@ -60,7 +60,7 @@ const ShowMonth = (props) => {
                             return(
                             <tr key={list._id}>
                                 <td>{list.task}</td>
-                                <td>{moment(list.dueDate).format("MM-DD-YYYY")}</td>
+                                <td>{moment(list.dueDate).add(1,'days').format("MM-DD-YYYY")}</td>
                                 <td>
                                 {/* modified Link route below trying to get edit page to work */}
                                 <Link className="Link" to= {`/toDoList/edit/${list._id}`}>Edit</Link> | 
