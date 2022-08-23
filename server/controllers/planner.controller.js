@@ -15,7 +15,7 @@ module.exports = {
     },
 
     getAllItems: (req, res) => {
-        Planner.find()
+    Planner.find()
             .then((allItems) => {
                 res.json(allItems);
             })

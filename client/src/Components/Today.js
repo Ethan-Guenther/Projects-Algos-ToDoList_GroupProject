@@ -18,6 +18,7 @@ const Today = (props) => {
         })
         .catch( (err) => console.log(err) );
     }, []);
+
   return (
     <div>
         { toDoList.map((list, index) => {
