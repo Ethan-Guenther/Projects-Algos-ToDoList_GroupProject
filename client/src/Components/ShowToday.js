@@ -50,7 +50,8 @@ const ShowToday = (props) => {
                 </ul>
             </div>
    {/* added a table structure needs to be CSSd to be in place- JB */}
-            <div>
+
+        <div className='table_container'>
                 <table className="tableData">
                     <thead>
                         <tr>
