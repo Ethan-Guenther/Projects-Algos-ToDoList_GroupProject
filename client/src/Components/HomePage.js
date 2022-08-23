@@ -17,7 +17,8 @@ const HomePage = () => {
       task,
       // Having Trouble getting dueDate to work on post request. ERROR dueDate not defined
       // wasn't set as a useState - JB
-      dueDate
+      dueDate,
+      complete: 'false'
     })
     .then((res) => {
       console.log(res);

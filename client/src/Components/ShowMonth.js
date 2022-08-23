@@ -18,12 +18,12 @@ const ShowMonth = (props) => {
 
     const handleCompleted = (list) => {
 
-        list.markedDelete = !list.markedDelete;
+        list.markedComplete = !list.markedComplete;
         setToDoList([...toDoList]);
     };
     
-    const styled = (markedDelete) => {
-        if (markedDelete === true) {
+    const styled = (markedComplete) => {
+        if (markedComplete === true) {
             return "completed";
         } else {
             return "notCompleted";
@@ -60,7 +60,7 @@ const ShowMonth = (props) => {
                 </ul>
             </div>
    {/* added a table structure needs to be CSSd to be in place- JB */}
-            <div>
+            <div className='table_container'>
                 <table className="tableData">
                     <thead>
                         <tr>
@@ -72,7 +72,7 @@ const ShowMonth = (props) => {
                     <tbody>
                         { filterArr.map((list, index) => {
                             return(
-                            <tr className={styled(list.markedDelete)} key={list._id}>
+                            <tr className={styled(list.markedComplete)} key={list._id}>
                             <td>
                                 {/* <input type="checkbox" onChange={(e) => handleCompleted(list)} /> */}
                                 {list.task}

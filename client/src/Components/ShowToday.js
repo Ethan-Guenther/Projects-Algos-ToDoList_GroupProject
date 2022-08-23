@@ -27,12 +27,12 @@ const ShowToday = (props) => {
 
     const handleCompleted = (list) => {
 
-        list.markedDelete = !list.markedDelete;
+        list.markedComplete = !list.markedComplete;
         setToDoList([...toDoList]);
     };
     
-    const styled = (markedDelete) => {
-        if (markedDelete === true) {
+    const styled = (markedComplete) => {
+        if (markedComplete === true) {
             return "completed";
         } else {
             return "notCompleted";
@@ -77,12 +77,12 @@ const ShowToday = (props) => {
                     <tbody>
                         { filterArr.map((list, index) => {
                             return(
-                            <tr className={styled(list.markedDelete)} key={list._id}>
+                            <tr className={styled(list.markedComplete)} key={list._id}>
                                 <td>
                                     {/* <input type="checkbox" onChange={(e) => handleCompleted(list)} /> */}
                                     {list.task}
                                 </td>
-                                <td>{moment(list.dueDate).format("MM-DD-YYYY")}</td>
+                                <td>{moment(list.dueDate).add(1,'days').format("MM-DD-YYYY")}</td>
                                 <td>
                                 {/* modified Link route below trying to get edit page to work */}
                                     <Link className="Link" to= {`/toDoList/edit/${list._id}`}>Edit</Link> | 
