@@ -25,6 +25,20 @@ const ShowToday = (props) => {
         task.dueDate.slice(0,10) === dateString );
     // console.log("Filtered Array = ", filterArr);
 
+    const handleCompleted = (list) => {
+
+        list.markedDelete = !list.markedDelete;
+        setToDoList([...toDoList]);
+    };
+    
+    const styled = (markedDelete) => {
+        if (markedDelete === true) {
+            return "completed";
+        } else {
+            return "notCompleted";
+        }
+    };
+
 
     const deleteItem = (taskId) => {
         axios.delete(`http://localhost:8000/api/planner/${taskId}`)
@@ -63,13 +77,16 @@ const ShowToday = (props) => {
                     <tbody>
                         { filterArr.map((list, index) => {
                             return(
-                            <tr key={list._id}>
-                                <td>{list.task}</td>
+                            <tr className={styled(list.markedDelete)} key={list._id}>
+                                <td>
+                                    {/* <input type="checkbox" onChange={(e) => handleCompleted(list)} /> */}
+                                    {list.task}
+                                </td>
                                 <td>{moment(list.dueDate).format("MM-DD-YYYY")}</td>
                                 <td>
                                 {/* modified Link route below trying to get edit page to work */}
-                                <Link className="Link" to= {`/toDoList/edit/${list._id}`}>Edit</Link> | 
-                                <button className='delete-button' onClick = {() => deleteItem(list._id)}>Delete </button>
+                                    <Link className="Link" to= {`/toDoList/edit/${list._id}`}>Edit</Link> | 
+                                    <button className='delete-button' onClick = {() => deleteItem(list._id)}>Delete </button>
                                 </td>
                             </tr>
                             )

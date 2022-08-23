@@ -15,9 +15,9 @@ const ShowAll = (props) => {
         .catch( (err) => console.log(err) );
     }, []);
 
-    const handleCompleted = (todo) => {
+    const handleCompleted = (list) => {
 
-      todo.markedDelete = !todo.markedDelete;
+      list.markedDelete = !list.markedDelete;
       setToDoList([...toDoList]);
     };
   

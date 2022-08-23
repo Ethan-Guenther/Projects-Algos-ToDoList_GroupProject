@@ -16,6 +16,20 @@ const ShowMonth = (props) => {
         monthStr = "0" + monthStr;
     }
 
+    const handleCompleted = (list) => {
+
+        list.markedDelete = !list.markedDelete;
+        setToDoList([...toDoList]);
+    };
+    
+    const styled = (markedDelete) => {
+        if (markedDelete === true) {
+            return "completed";
+        } else {
+            return "notCompleted";
+        }
+    };
+
     // filter the toDoList array recieved from props for dueDate = this month
     const filterArr = toDoList.filter(( task, index ) => 
         moment(task.dueDate).format("MM") === monthStr );
@@ -58,13 +72,16 @@ const ShowMonth = (props) => {
                     <tbody>
                         { filterArr.map((list, index) => {
                             return(
-                            <tr key={list._id}>
-                                <td>{list.task}</td>
-                                <td>{moment(list.dueDate).add(1,'days').format("MM-DD-YYYY")}</td>
+                            <tr className={styled(list.markedDelete)} key={list._id}>
+                            <td>
+                                {/* <input type="checkbox" onChange={(e) => handleCompleted(list)} /> */}
+                                {list.task}
+                            </td>                                
+                            <td>{moment(list.dueDate).add(1,'days').format("MM-DD-YYYY")}</td>
                                 <td>
                                 {/* modified Link route below trying to get edit page to work */}
-                                <Link className="Link" to= {`/toDoList/edit/${list._id}`}>Edit</Link> | 
-                                <button className='delete-button' onClick = {() => deleteItem(list._id)}>Delete </button>
+                                    <Link className="Link" to= {`/toDoList/edit/${list._id}`}>Edit</Link> | 
+                                    <button className='delete-button' onClick = {() => deleteItem(list._id)}>Delete </button>
                                 </td>
                             </tr>
                             )
@@ -73,7 +90,8 @@ const ShowMonth = (props) => {
                 </table>
             </div>
         </div>
-    </div>    )
+    </div>
+    )
 }
 
 export default ShowMonth
