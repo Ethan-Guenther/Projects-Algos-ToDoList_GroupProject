@@ -59,3 +59,43 @@
 .create_form_container input {
   margin: 30px;
 }
+
+.table_container {
+  padding: 40px 0px;
+  min-height: 30em;
+  width: 50%;
+  margin-top: 10px;
+  margin-left: 25%;
+  background-color: lightblue;
+  display: flex;
+  justify-content: center;
+  height: auto;
+}
+
+.tableData {
+  border: solid black collapse;
+  background-color: white;
+  width: 80%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  background-image: linear-gradient(90deg, yellow -10%, white, white,   white, white 90%, yellow);
+}
+.tableData td {
+  padding: 25px;
+  border: solid black;
+  word-wrap: break-word;
+
+}
+.tableData button{
+  padding: 5px;
+  margin: 15px;
+  cursor: pointer;
+}
+.tableData tr {
+  width: 50%;
+}
+.Link {
+  margin: 15px;
+  cursor: pointer;
+}
+
