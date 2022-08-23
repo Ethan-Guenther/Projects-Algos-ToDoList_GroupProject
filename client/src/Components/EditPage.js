@@ -71,7 +71,7 @@ const EditPage = () => {
                         <label>Due Date:</label>
                         <br/>
                         <input type={"date"}
-                        name="dueDate" value={moment(dueDate).format("YYYY-MM-DD")}
+                        name="dueDate" value={dueDate.slice(0,10)}
                         onChange={(e) => setDueDate(e.target.value)}/>
                         <br/>
                         <button type="submit">Submit</button>
