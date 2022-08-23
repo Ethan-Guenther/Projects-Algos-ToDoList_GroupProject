@@ -15,6 +15,20 @@ const ShowAll = (props) => {
         .catch( (err) => console.log(err) );
     }, []);
 
+    const handleCompleted = (list) => {
+
+      list.markedComplete = !list.markedComplete;
+      setToDoList([...toDoList]);
+    };
+  
+    const styled = (markedComplete) => {
+      if (markedComplete === true) {
+        return "completed";
+      } else {
+        return "notCompleted";
+      }
+    };
+
     // added delete task to homePage, tested and worked in my desktop- JB
     const deleteItem = (taskId) => {
       axios.delete(`http://localhost:8000/api/planner/${taskId}`)
@@ -40,7 +54,8 @@ const ShowAll = (props) => {
           </ul>
         </div>
  {/* added a table structure needs to be CSSd to be in place- JB */}
-        <div>
+
+        <div className='table_container'>
         <table className="tableData">
             <thead>
               <tr>
@@ -52,9 +67,13 @@ const ShowAll = (props) => {
                 <tbody>
                   { toDoList.map((list, index) => {
                     return(
-                      <tr key={list._id}>
-                        <td>{list.task}</td>
-                        <td>{moment(list.dueDate).format("MM-DD-YYYY")}</td>
+                      <tr className={styled(list.markedComplete)} key={list._id}>
+                        <td>
+                          <input type="checkbox" onChange={(e) => handleCompleted(list)} />
+                          {list.task}
+                        </td>
+
+                        <td>{moment(list.dueDate).add(1,'days').format("MM-DD-YYYY")}</td>
                         <td>
                           {/* modified Link route below trying to get edit page to work */}
                           <Link className="Link" to= {`/toDoList/edit/${list._id}`}>Edit</Link> | 
@@ -66,7 +85,6 @@ const ShowAll = (props) => {
                   </tbody>
                 </table>
         </div>
-
     </div>
   </div>
   )
