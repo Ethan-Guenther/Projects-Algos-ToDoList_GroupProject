@@ -106,6 +106,8 @@
   border-radius: 40%;
   box-shadow: 0;
   border: solid black;
-  /* box-shadow: -5px 5px 10px; */
+}
 
+.completed {
+  text-decoration: line-through;
 }
