@@ -7,23 +7,7 @@ import { Link, useNavigate } from "react-router-dom";
 const ShowToday = (props) => {
     const {toDoList, setToDoList} = props;
     const navigate = useNavigate();
-
-    // build a formatted string for todays date
-    let currentDate = new Date();
-    let date = currentDate.getDate();
-    let month = currentDate.getMonth(); //Be careful! January is 0 not 1
-    month = month + 1;
-    let monthStr = month.toString();
-    if (monthStr.length < 2) {
-        monthStr = "0" + monthStr;
-    }
-    let year = currentDate.getFullYear();
-    let dateString = year + "-" +(monthStr) + "-" + date;
-
-    // filter the toDoList array recieved from props for dueDate = todays date
-    const filterArr = toDoList.filter(( task, index ) => 
-        task.dueDate.slice(0,10) === dateString );
-    // console.log("Filtered Array = ", filterArr);
+    const currentDate = moment();
 
     const handleCompleted = (list) => {
 
@@ -75,11 +59,12 @@ const ShowToday = (props) => {
                         </tr>
                     </thead>
                     <tbody>
-                        { filterArr.map((list, index) => {
+                        { toDoList.map((list, index) => {
+                            if(moment(currentDate).add(0,'days').format('MM-DD-YYYY') === moment(list.dueDate).add(1,'days').format("MM-DD-YYYY"))
                             return(
                             <tr className={styled(list.markedComplete)} key={list._id}>
                                 <td>
-                                    <input type="checkbox" onChange={(e) => handleCompleted(list)} />
+                                    <input id = "checkbox"  type="checkbox" onChange={(e) => handleCompleted(list)} />
                                     {list.task}
                                 </td>
                                 <td>{moment(list.dueDate).add(1,'days').format("MM-DD-YYYY")}</td>
