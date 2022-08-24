@@ -6,6 +6,7 @@ import HomePage from './Components/HomePage';
 import ShowAll from './Components/ShowAll';
 import EditPage from './Components/EditPage';
 import ShowToday from './Components/ShowToday';
+import ShowWeek from './Components/ShowWeek';
 import ShowMonth from './Components/ShowMonth';
 
 function App() {
@@ -33,6 +34,9 @@ and month. Remember to use props when bringing state down to the child class.*/}
           <Route path='/toDoList/today' element={<ShowToday toDoList = {toDoList} setToDoList = {setToDoList}/>} />
           {/* Added route for month page */}
           <Route path='/toDoList/month' element={<ShowMonth toDoList = {toDoList} setToDoList = {setToDoList}/>} />
+          {/* Added route for week page */}
+          <Route path='/toDoList/week' element={<ShowWeek toDoList = {toDoList} setToDoList = {setToDoList}/>} />
+          
         </Routes>
       </BrowserRouter>
     </div>

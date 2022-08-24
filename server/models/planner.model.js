@@ -4,7 +4,7 @@ const PlannerSchema = mongoose.Schema({
     // Changed 'name' to 'task' matching the front end -JB
     task: {
         type:String,
-        required:[true, "Name is required"],
+        required:[true, "Task is required"],
     },
     dueDate: {
         type:Date,

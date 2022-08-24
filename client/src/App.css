@@ -29,7 +29,8 @@
 }
 
 .create_form_container {
-  height: 30em;
+  min-height: 30em;
+  height: auto;
   width: 50%;
   margin-top: 10px;
   margin-left: 25%;
@@ -55,6 +56,7 @@
   font-weight: 600;
   cursor: pointer;
   border-radius: 15px;
+  margin-bottom: 20px;
 }
 .create_form_container input {
   margin: 30px;
