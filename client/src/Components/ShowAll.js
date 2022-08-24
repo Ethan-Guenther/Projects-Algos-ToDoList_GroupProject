@@ -69,7 +69,7 @@ const ShowAll = (props) => {
                     return(
                       <tr className={styled(list.markedComplete)} key={list._id}>
                         <td>
-                          <input type="checkbox" onChange={(e) => handleCompleted(list)} />
+                          <input id = "checkbox" type="checkbox" onChange={(e) => handleCompleted(list)} />
                           {list.task}
                         </td>
 

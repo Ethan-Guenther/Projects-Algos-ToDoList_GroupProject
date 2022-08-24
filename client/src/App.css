@@ -64,7 +64,6 @@
 
 .table_container {
   padding: 40px 0px;
-  min-height: 30em;
   width: 50%;
   margin-top: 10px;
   margin-left: 25%;
@@ -112,4 +111,8 @@
 
 .completed {
   text-decoration: line-through;
+}
+#checkbox {
+  margin-right: 10px;
+  margin-bottom: 10px;
 }

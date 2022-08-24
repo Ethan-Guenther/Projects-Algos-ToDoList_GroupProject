@@ -46,7 +46,7 @@ const ShowWeek = (props) => {
                 <ul className='NavBar'>
                     <li><button><Link to={"/"}>Home Page</Link></button></li>
                     <li><button><Link to={"/toDoList/all"}>Show All</Link></button></li>
-                    <li><button><Link to={"/toDoList/week"}>Week</Link></button></li>
+                    <li><button><Link to={"/toDoList/today"}>Today</Link></button></li>
                     <li><button><Link to={"/toDoList/month"}>Month</Link></button></li>
                 </ul>
             </div>
@@ -71,7 +71,7 @@ const ShowWeek = (props) => {
                 return(
                       <tr className={styled(list.markedComplete)} key={list._id}>
                         <td>
-                        <input type="checkbox" onChange={(e) => handleCompleted(list)} />
+                        <input id = "checkbox"  type="checkbox" onChange={(e) => handleCompleted(list)} />
                             {list.task}</td>
                         <td>{moment(list.dueDate).add(1,'days').format("MM-DD-YYYY")}</td>
                         {console.log(moment(currentDate).add(7,'days').format("MM-DD-YYYY"))}
