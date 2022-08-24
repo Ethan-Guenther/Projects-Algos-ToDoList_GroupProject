@@ -43,7 +43,7 @@ const ShowAll = (props) => {
   return (
     <div className='container'>
       <div>
-        <h1>Hello Friends</h1>
+        <h1>All Tasks</h1>
 
         <div>
           <ul className='NavBar'>

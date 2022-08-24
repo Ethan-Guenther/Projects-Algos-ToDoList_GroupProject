@@ -50,7 +50,7 @@ const ShowMonth = (props) => {
     return (
         <div className='container'>
         <div>
-            <h1>Hello Friends</h1>
+            <h1>Tasks Due This Month</h1>
             <div>
                 <ul className='NavBar'>
                     <li><button><Link to={"/"}>Home Page</Link></button></li>
@@ -74,7 +74,7 @@ const ShowMonth = (props) => {
                             return(
                             <tr className={styled(list.markedComplete)} key={list._id}>
                             <td>
-                                {/* <input type="checkbox" onChange={(e) => handleCompleted(list)} /> */}
+                                <input type="checkbox" onChange={(e) => handleCompleted(list)} />
                                 {list.task}
                             </td>                                
                             <td>{moment(list.dueDate).add(1,'days').format("MM-DD-YYYY")}</td>

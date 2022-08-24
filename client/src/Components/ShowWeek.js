@@ -4,26 +4,11 @@ import moment from 'moment';
 import { Link, useNavigate } from "react-router-dom";
 
 
-const ShowToday = (props) => {
+const ShowWeek = (props) => {
     const {toDoList, setToDoList} = props;
     const navigate = useNavigate();
-
-    // build a formatted string for todays date
-    let currentDate = new Date();
-    let date = currentDate.getDate();
-    let month = currentDate.getMonth(); //Be careful! January is 0 not 1
-    month = month + 1;
-    let monthStr = month.toString();
-    if (monthStr.length < 2) {
-        monthStr = "0" + monthStr;
-    }
-    let year = currentDate.getFullYear();
-    let dateString = year + "-" +(monthStr) + "-" + date;
-
-    // filter the toDoList array recieved from props for dueDate = todays date
-    const filterArr = toDoList.filter(( task, index ) => 
-        task.dueDate.slice(0,10) === dateString );
-    // console.log("Filtered Array = ", filterArr);
+    const currentDate = moment().format('MM-DD-YYYY');
+    console.log(currentDate);
 
     const handleCompleted = (list) => {
 
@@ -54,7 +39,7 @@ const ShowToday = (props) => {
     return (
     <div className='container'>
         <div>
-            <h1>Tasks Due Today</h1>
+            <h1>Tasks Due Within 7 Days</h1>
             <div>
                 <ul className='NavBar'>
                     <li><button><Link to={"/"}>Home Page</Link></button></li>
@@ -75,22 +60,29 @@ const ShowToday = (props) => {
                         </tr>
                     </thead>
                     <tbody>
-                        { filterArr.map((list, index) => {
-                            return(
-                            <tr className={styled(list.markedComplete)} key={list._id}>
-                                <td>
-                                    <input type="checkbox" onChange={(e) => handleCompleted(list)} />
-                                    {list.task}
-                                </td>
-                                <td>{moment(list.dueDate).add(1,'days').format("MM-DD-YYYY")}</td>
-                                <td>
-                                {/* modified Link route below trying to get edit page to work */}
-                                    <Link className="Link" to= {`/toDoList/edit/${list._id}`}>Edit</Link> | 
+                    { toDoList.map((list, index) => {
+            { 
+                // Gives anytime within a Week other than actual due date to Complete a task given by current date
+                //if task is on today list, it will not be on week list. 
+                if(moment(list.dueDate).add(1,'days').format("MM-DD-YYYY") > moment(currentDate).add(0,'days').format('MM-DD-YYYY') &&
+                moment(list.dueDate).add(1,'days').format("MM-DD-YYYY") < moment(currentDate).add(8,'days').format('MM-DD-YYYY') )
+                return(
+                      <tr key={list._id}>
+                        <td>
+                        <input type="checkbox" onChange={(e) => handleCompleted(list)} />
+                            {list.task}</td>
+                        <td>{moment(list.dueDate).add(1,'days').format("MM-DD-YYYY")}</td>
+                        {console.log(moment(currentDate).add(7,'days').format("MM-DD-YYYY"))}
+                        <td>
+                          {/* modified Link route below trying to get edit page to work */}
+                          <Link className="Link" to= {`/toDoList/edit/${list._id}`}>Edit</Link> | 
                                     <button className='delete-button' onClick = {() => deleteItem(list._id)}>Delete </button>
-                                </td>
-                            </tr>
-                            )
-                        })}
+                        </td>
+                      </tr>
+                    )
+            }
+
+                  })}
                     </tbody>
                 </table>
             </div>
@@ -100,4 +92,4 @@ const ShowToday = (props) => {
 
 }
 
-export default ShowToday
+export default ShowWeek;
