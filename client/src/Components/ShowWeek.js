@@ -9,7 +9,7 @@ const ShowWeek = (props) => {
     const navigate = useNavigate();
         //For Tim, Remove .format('MM-DD-YYYY') from current date shown below.
     //This fixes the issue, as it fixed the issue for Josh.
-    const currentDate = moment().format('MM-DD-YYYY');
+    const currentDate = moment();
     console.log(currentDate);
 
     const handleCompleted = (list) => {

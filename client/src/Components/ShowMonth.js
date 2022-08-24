@@ -71,6 +71,9 @@ const ShowMonth = (props) => {
                     </thead>
                     <tbody>
                         { filterArr.map((list, index) => {
+                            {
+                                if(moment(list.dueDate).add(1, 'days').format("MM") === monthStr )
+                            
                             return(
                             <tr className={styled(list.markedComplete)} key={list._id}>
                             <td>
@@ -84,7 +87,7 @@ const ShowMonth = (props) => {
                                     <button className='delete-button' onClick = {() => deleteItem(list._id)}>Delete </button>
                                 </td>
                             </tr>
-                            )
+                            )}
                         })}
                     </tbody>
                 </table>
