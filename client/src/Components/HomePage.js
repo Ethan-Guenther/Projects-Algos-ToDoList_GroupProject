@@ -1,11 +1,15 @@
 import {useState} from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import moment from 'moment';
 
 const HomePage = () => {
   const [task, setTask] = useState("");
   const [dueDate, setDueDate] = useState(Date);
   const [errors, setErrors] = useState({}); 
+
+  const currentDate = moment().add(7, 'days').format('MM-DD');
+  console.log(currentDate)
 
   const navigate = useNavigate();
 

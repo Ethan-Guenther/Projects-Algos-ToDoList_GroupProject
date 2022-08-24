@@ -7,6 +7,8 @@ import { Link, useNavigate } from "react-router-dom";
 const ShowWeek = (props) => {
     const {toDoList, setToDoList} = props;
     const navigate = useNavigate();
+        //For Tim, Remove .format('MM-DD-YYYY') from current date shown below.
+    //This fixes the issue, as it fixed the issue for Josh.
     const currentDate = moment().format('MM-DD-YYYY');
     console.log(currentDate);
 
@@ -67,7 +69,7 @@ const ShowWeek = (props) => {
                 if(moment(list.dueDate).add(1,'days').format("MM-DD-YYYY") > moment(currentDate).add(0,'days').format('MM-DD-YYYY') &&
                 moment(list.dueDate).add(1,'days').format("MM-DD-YYYY") < moment(currentDate).add(8,'days').format('MM-DD-YYYY') )
                 return(
-                      <tr key={list._id}>
+                      <tr className={styled(list.markedComplete)} key={list._id}>
                         <td>
                         <input type="checkbox" onChange={(e) => handleCompleted(list)} />
                             {list.task}</td>
